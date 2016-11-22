@@ -1,10 +1,10 @@
 var pointsArray = document.getElementsByClassName('point')
 
-var revealPoint = function(point) {
-        point.style.opacity = 1;
-        point.style.transform = "scaleX(1) translateY(0)";
-        point.style.mstransform = "scaleX(1) translateY(0)";
-        point.style.WebkitTransform = "scaleX(1) translateY(0)";
+var revealPoint = function(points) {
+        points.style.opacity = 1;
+        points.style.transform = "scaleX(1) translateY(0)";
+        points.style.mstransform = "scaleX(1) translateY(0)";
+        points.style.WebkitTransform = "scaleX(1) translateY(0)";
 };
 
 var animatePoints = function(points) { 
