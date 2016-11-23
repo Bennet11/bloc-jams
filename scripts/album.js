@@ -28,6 +28,21 @@ var albumMarconi = {
     ]
  };
 
+var albumJohn = {
+    title: 'Baby Come Back',
+    artist: 'John Wilson',
+    label: 'Wew',
+    year: '2016',
+    albumArtUrl: 'assets/images/album_covers/22.jpg',
+    songs: [
+        { title: '1st', duration: '1:01' },
+        { title: '2nd', duration: '5:01' },
+        { title: '3rd', duration: '3:21'},
+        { title: '4th', duration: '3:14' },
+        { title: '5th', duration: '2:15'}
+    ]
+}
+
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -62,4 +77,14 @@ var setCurrentAlbum = function(album) {
 
 window.onload = function() {
      setCurrentAlbum(albumPicasso);
+    
+    var albums = [albumPicasso, albumMarconi, albumJohn]
+    var index = 1;
+    albumImage.addEventListener('click', function(event) {
+        setCurrentAlbum(album[index]);
+        index++;
+        if (index == album.length) {
+            index = 0
+        }
+    });
 };
