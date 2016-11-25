@@ -78,6 +78,7 @@ var setCurrentAlbum = function(album) {
 window.onload = function() {
      setCurrentAlbum(albumPicasso);
     
+    var albumImage = document.getElementsByClassName('album-cover-art')[0];
     var albums = [albumPicasso, albumMarconi, albumJohn];
     var index = 1;
     albumImage.addEventListener('click', function(event) {
