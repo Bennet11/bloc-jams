@@ -72,12 +72,21 @@ window.onload = function() {
     setCurrentAlbum(albumPicasso);
     
     var findParentByClassName = function(element, targetClass) {
+        var currentParent = element.parentElement;
+        
         if (element) {
-            var currentParent = element.parentElement;
             while (currentParent.className != targetClass && currentParent.className !== null){
                 currentParent = currentParent.parentElement;
             }
             return currentParent;
+        } 
+        
+        else if(element.parentElement == null) {
+            alert("No parent found");
+        }
+        
+        else if(currentParent.className != targetClass) {
+            alert("No parent found with that class name.")
         }
     };
     
