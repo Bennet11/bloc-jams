@@ -187,7 +187,7 @@ var previousSong = function() {
 };
 
 var togglePlayFromPlayerBar = function() {
-    var songNumberCell = $(this).find('.song-item-number');
+    var songNumberCell = getSongNumberCell(currentlyPlayingSongNumber);
     var songNumber = parseInt(songNumberCell.attr('data-song-number'));
     
     if (currentlyPlayingSongNumber === songNumber) {
