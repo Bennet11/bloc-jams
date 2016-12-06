@@ -26,7 +26,6 @@ var getSongNumberCell = function(number) {
     return $('.song-item-number[data-song-number="' + number + '"]');
 };
 
-
 var createSongRow = function(songNumber, songName, songLength) {
     var template = 
         '<tr class="album-view-song-item">'
@@ -64,7 +63,7 @@ var createSongRow = function(songNumber, songName, songLength) {
             }
         }
     };
-    
+        
     var onHover = function(event) {
         var songNumberCell = $(this).find('.song-item-number');
         var songNumber = parseInt(songNumberCell.attr('data-song-number'));
@@ -187,6 +186,24 @@ var previousSong = function() {
     
 };
 
+var togglePlayFromPlayerBar = function() {
+    var songNumberCell = $(this).find('.song-item-number');
+    var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+    
+    if (currentlyPlayingSongNumber === songNumber) {
+        if (currentSoundFile.isPaused()) {
+            $(this).html(pauseButtonTemplate);
+            $plauseButton.html(playerBarPauseButton);
+            currentSoundFile.play()
+        } else {
+            $(this).html(playButtonTemplate);
+            $plauseButton.html(playerBarPlayButton);
+            currentSoundFile.pause();
+        }
+    }
+};
+
+
 var songNumber = parseInt(document.getElementsByClassName('.song-item-number'));
 
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>'
@@ -202,11 +219,13 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $plauseButton = $('.main-controls .play-pause');
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
+    $plauseButton.click(togglePlayFromPlayerBar);
     
     var findParentByClassName = function(element, targetClass) {
         if (element) {
